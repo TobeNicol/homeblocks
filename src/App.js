@@ -3,42 +3,77 @@ import './App.css';
 import {sounds } from './sounds'
 import Header from './components/Header';
 import Audioplayer from './components/Audioplayer';
-import SoundItem from './components/SoundItem';
+import Sounds from './components/Sounds';
 import Footer from './components/Footer';
 import Modal from './components/Modal';
+import Clock from './components/Clock';
 
 class App extends Component {
   constructor(){
     super()
     this.state={
-     currentPlaylist: "https://w.soundcloud.com/player/?url=https://soundcloud.com/nicolbuni/sets/indie&auto_play=true",
-     audio: sounds,
-     modalShown: false
+    //  currentPlaylist: "https://w.soundcloud.com/player/?url=https://soundcloud.com/nicolbuni/sets/indie&auto_play=true",
+    //  audio: sounds,
+    //  modalShown: false,
+     blocks: [
+        {
+          id: 1,
+          element: <Clock/>,
+          name: 'Clock'
+        }, 
+        {
+          id:2,
+          element:  <Sounds/>,
+          name: 'Ambient Sounds'
+        }, 
+        {
+          id:3,
+          element: <Audioplayer/>,
+          name: 'Audioplayer'
+        }, 
+   ],
+     shownBlocks: [],
     }
   }
 
-  toggleModal = ()=>{
-    this.state.modalShown ? this.setState({modalShown:false}): this.setState({modalShown:true});
-  }
+addElement = ()=>{
+  //save shown block to storage
 
-  changePlaylist = (val)=>{
-    this.setState({currentPlaylist: val })
-  }
+}
+//TODO - Need to initialize empty array for chrome storage
+componentDidMount(){
 
-  render() {
+window.chrome.storage.local.get(['shownBlocks'], (obj)=>{
+  if(obj.shownBlocks.length === 0){
+      this.setState({shownBlocks: [{
+        element: <StartMessage/>
+      }]
+      })
+  }
+})  
+}
+
+render() {
+
     return (
       <div className="App">
         <div className="card">
-      <Header/>
-      <Modal toggle={this.toggleModal} isShown={this.state.modalShown} changePlaylist = {this.changePlaylist} currentPlaylist={this.state.currentPlaylist}/>
-      <Audioplayer audioUrl={this.state.currentPlaylist} />
-      <button onClick={this.toggleModal} className="card__btn"> Change playlist </button>
+        {
+          this.state.shownBlocks.map(block=>{
+          return block.element;
+        })
+        }
 
-        <div className="card__sound-list"> 
+      {/* <Header/> */}
+     
+      {/* <Audioplayer audioUrl={this.state.currentPlaylist} /> */}
+      {/* <button onClick={this.toggleModal} className="card__btn"> Change playlist </button> */}
+
+        {/* <div className="card__sound-list"> 
         { this.state.audio.map(sound=> {
           return <SoundItem soundObj={sound}/>
           }) }
-        </div>
+        </div> */}
 
 
          </div>

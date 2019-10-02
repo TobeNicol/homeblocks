@@ -14,7 +14,7 @@ playlistChange = (e) =>{
 }
 
 setPlaylist =  ()=>{
-  if(this.state.playlistUrl !== ''){
+  if(this.state.playlistUrl){
   const value = this.state.playlistUrl;
   const str = `https://w.soundcloud.com/player/?url=${value}&auto_play=true`
    this.props.changePlaylist(str);
