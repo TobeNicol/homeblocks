@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 
-class Modal extends Component {
+class AudioModal extends Component {
   constructor(){
     super()
     this.state = {
@@ -43,4 +43,4 @@ render(){
 
 }
 
-export default Modal
+export default AudioModal

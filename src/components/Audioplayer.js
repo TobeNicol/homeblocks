@@ -1,12 +1,12 @@
-import React from 'react';
-import Modal from './components/Modal';
+import React, { Component } from 'react';
+import AudioModal from './AudioModal';
 
 
 class Audioplayer extends Component{
   constructor(){
       super()
       this.state= {
-        currentPlaylist: "https://w.soundcloud.com/player/?url=https://soundcloud.com/nicolbuni/sets/indie&auto_play=true",
+        currentPlaylist: "https://w.soundcloud.com/player/?url=https://soundcloud.com/scifilofifan/sets/indie&auto_play=true",
         modalShown: false,
       }
     }
@@ -22,7 +22,7 @@ class Audioplayer extends Component{
     render(){
         return(
           <div className="card__audio">
-             <Modal toggle={this.toggleModal} isShown={this.state.modalShown} changePlaylist = {this.changePlaylist} currentPlaylist={this.state.currentPlaylist}/>
+             <AudioModal toggle={this.toggleModal} isShown={this.state.modalShown} changePlaylist = {this.changePlaylist} currentPlaylist={this.state.currentPlaylist}/>
             <iframe scrolling="no" frameborder="no" allow="autoplay"
             src={this.state.currentPlaylist}></iframe>
         <button onClick={this.toggleModal} className="card__btn"> Change playlist </button>
@@ -35,13 +35,6 @@ class Audioplayer extends Component{
 
 }
 
-// const Audioplayer = ({audioUrl})=>{
-//   return(
-//           <div className="card__audio">
-//           <iframe scrolling="no" frameborder="no" allow="autoplay"
-//   src={audioUrl}></iframe>
-//          </div>
-//   )
-// }
+
 
 export default Audioplayer
