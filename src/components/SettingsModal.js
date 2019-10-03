@@ -32,15 +32,15 @@ render(){
       <h1>Settings ⚙</h1>
           <div className="modal__list-item"> 
           <label for="background-url">Change background: (Add url)</label>
-          <input id="background-url"type="text" placeholder="Url to image" className="modal__input" onClick={this.handleUrl}  />
+          <input id="background-url"type="text" placeholder="Url to image" className="modal__input" onChange={this.handleUrl}  />
           </div>
      
      
 
-      <button  className="modal__btn" onClick={this.state.saveSettings} > 
+      <button  className="modal__btn" onClick={this.saveSettings} > 
       SAVE
       </button>
-          <button  className="modal__btn" onClick={this.props.close}>
+          <button  className="modal__btn" onClick={  ()=>{this.props.close('settingsModal')}   }>
           CANCEL
         </button>
 

@@ -6,7 +6,7 @@ import Sounds from './components/Sounds';
 import Footer from './components/Footer';
 import SettingsModal from './components/SettingsModal'; 
 import AddModal from './components/AddModal';
-import Social from './components/Social';
+import Goals from './components/Goals';
 import Clock from './components/Clock';
 
 class App extends Component {
@@ -31,8 +31,8 @@ class App extends Component {
         },
         {
           id:4,
-          element: <Social/>,
-          name: 'Social Followers'
+          element: <Goals/>,
+          name: 'Goals'
         }, 
    ],
      shownBlocks: [],
@@ -50,6 +50,7 @@ changeBackground = (url)=>{
   
 toggleModal = (type)=>{
   console.log('toggling sidebar')
+  console.log('this is the type->', type)
   //show modal
   this.setState({[type]: this.state[type] ? false: true })
 }
@@ -63,8 +64,7 @@ addBlocks = (arr)=>{
 deleteElement = ()=>{
 
 }
-//TODO - Need to initialize empty array for chrome storage
-//TODO - Refactor to use id's only in shownBlocks
+
 componentDidMount(){
 
 window.chrome.storage.local.get(['shownBlocks', 'backgroundUrl'], (obj)=>{
@@ -76,13 +76,18 @@ window.chrome.storage.local.get(['shownBlocks', 'backgroundUrl'], (obj)=>{
 }
 
 componentDidUpdate(_, prevState) {
+  console.log(this)
+  const currentShownBlocks = this.state.shownBlocks;
+  let notChanged = prevState.shownBlocks.every((val) =>{
+    console.log('this inside -> not changed',this)
+    return currentShownBlocks.includes(val);
+  });
+  console.log(currentShownBlocks, prevState, notChanged)
 
-  const notChanged = prevState.shownBlocks.every(function(val) {
-      return this.state.shownBlocks.includes(val);
-    });
+  if(prevState.shownBlocks.length === 0 ) notChanged = false;
 
   if (!notChanged) {
-      window.chrome.storage.local.set({shownBlocks: this.state.shownBlocks}, ()=>{
+      window.chrome.storage.local.set({shownBlocks: currentShownBlocks}, ()=>{
       console.log('added new data')
       })
   }
@@ -94,15 +99,18 @@ componentDidUpdate(_, prevState) {
 }
 
 render() {
+
     // let isInit = this.state.shownBlocks.length;
-    const elArr = this.state.blocks.filter((item)=>this.state.shownBlocks.includes(item.id));
+    const elArr = this.state.blocks.filter((item)=>this.state.shownBlocks.includes(String(item.id)));
+
+    console.log(elArr, elArr.length)
     if( elArr.length){
         return(
-          <div className="App">
+          <div  style={ {backgroundImage:  `url(${this.state.backgroundUrl})` }  }  className="App">
           <SettingsModal changeBg={this.changeBackground} backgroundUrl={this.state.backgroundUrl} isShown={this.state.settingsModal} close={this.toggleModal}/>
 
           <AddModal addBlocks={this.addBlocks} blocks={this.state.blocks} isShown={this.state.addModal} close={this.toggleModal}/>
-          <button className="addblock-btn-2" onClick={()=>{this.toggleModal('settingsModal') } }> SETTINGS ⚙</button>
+          <button className="addblock-btn-1" onClick={()=>{this.toggleModal('settingsModal') } }> SETTINGS ⚙</button>
 
           <button className="addblock-btn-2" onClick={()=>{this.toggleModal('addModal') } }> EDIT ✎</button>
           {
@@ -120,7 +128,7 @@ render() {
 
         <AddModal addBlocks={this.addBlocks} blocks={this.state.blocks} isShown={this.state.addModal} close={this.toggleModal}/>
         {/* <div className="card"> */}
-        <button className="addblock-btn" onClick={ ()=>{this.toggleModal('addModal')  } }>ADD BLOCK +</button>
+        <button className="addblock-start" onClick={ ()=>{this.toggleModal('addModal')  } }>ADD BLOCK +</button>
         {/* </div> */}
         </div>
       )

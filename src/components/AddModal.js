@@ -47,13 +47,13 @@ render(){
      
 
       <button  className="modal__btn" onClick={ ()=>{ 
-        console.log('I should add blocks');
+        console.log('I should add blocks', this.state.toAdd);
         this.props.addBlocks(this.state.toAdd); 
         this.props.close('addModal'); 
          } } > 
       ADD BLOCK(S)
       </button>
-          <button  className="modal__btn" onClick={this.props.close}>
+          <button  className="modal__btn" onClick={  ()=>{this.props.close('addModal')}  }>
           CANCEL
         </button>
 

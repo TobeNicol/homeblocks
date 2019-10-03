@@ -5,13 +5,16 @@ A customizable dashboard for your new tab.
 ## Features 
 - Add custom background page
 - Pick blocks to display
-- Display current time and weather
-- Display year progress.
+Blocks Available:
+- Current time + timezone.
+- Ambient nature sounds
+- Soundcloud playlist
+- Goals list
 
 ## Todos
-- Create Social Block (Youtube, Twitter follower count). - Would need an API auth.. unsure if I will implement this.
-- Create time & weather block.
-- Create year progress bar widget
+- Properly persist goals.
+- Create year progress bar block.
 - Drag to edit position in settings page
 - Add sound credits in manifest, desc & about.
+- Fix potential css issues
 - Possible: make blocks into carousel ?

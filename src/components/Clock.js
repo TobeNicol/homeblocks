@@ -4,15 +4,19 @@ class Clock extends Component{
     constructor(){
         super()
         this.state= {
-         followers: 0,
+         timeNow: new Date().toLocaleTimeString(),
         }
       }
 
       render(){
+
+        //not exactly accurate 
+        setInterval(()=>{ this.setState({timeNow: new Date().toLocaleTimeString() }) }, 1000)
+
           return(
             <div className="card">
-            <h1>20:00</h1>
-            <span>Muscat</span>
+            <h1> {this.state.timeNow} </h1>
+            <span>{Intl.DateTimeFormat().resolvedOptions().timeZone}</span>
             </div>
           )
       }

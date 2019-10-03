@@ -126,13 +126,19 @@
 .footer, .footer a{
   color: white;
 }
-.addblock-btn{
+.addblock-start{
   flex-shrink: 0;
   color: white;
   background-color: transparent;
   font-size: 2rem;
   font-weight: bold;
 }
+.addblock-btn-1{
+  position: absolute;
+  top: 0;
+  right: 40px;
+}
+
 
 .addblock-btn-2{
   position: absolute;
