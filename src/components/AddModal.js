@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 
 
-class Sidebar extends Component {
+class AddModal extends Component {
   constructor(){
     super()
     this.state = {
       toAdd: [],
+      
     }
 }
 
@@ -25,20 +26,19 @@ handleCheck = (e)=>{
     }
 }
 
-
-
 render(){
   return(
-    <div className={`${this.props.isShown ? 'show': 'hide'} card__modal-outer`}> 
-    <div className="card__modal-inner">
+    <div className={`${this.props.isShown ? 'show': 'hide'} modal`}> 
+    
+    <div className="modal__inner">
 
-      <h1>Choose blocks</h1>
+      <h1>Edit blocks +</h1>
       {
         this.props.blocks.map(item=>{
         return (
-          <div className="card__list-item"> 
-          <label>{item.name}</label>
-          <input type="checkbox" value={item.id} className="card__modal-input" onClick={this.handleCheck}  />
+          <div className="modal__list-item"> 
+          <label for={item.id}>☰ {item.name}</label>
+          <input id={item.id} type="checkbox" value={item.id} className="modal__checkbox" onClick={this.handleCheck}  />
           </div>
         )
 
@@ -46,10 +46,14 @@ render(){
       }
      
 
-      <button  className="card__btn" onClick={ ()=>{ this.props.addBlocks(this.state.toAdd) } } > 
+      <button  className="modal__btn" onClick={ ()=>{ 
+        console.log('I should add blocks');
+        this.props.addBlocks(this.state.toAdd); 
+        this.props.close('addModal'); 
+         } } > 
       ADD BLOCK(S)
       </button>
-          <button  className="card__btn" onClick={this.props.close}>
+          <button  className="modal__btn" onClick={this.props.close}>
           CANCEL
         </button>
 
@@ -62,4 +66,4 @@ render(){
 
 }
 
-export default Sidebar
+export default AddModal

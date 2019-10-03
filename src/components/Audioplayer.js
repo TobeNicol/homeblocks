@@ -21,11 +21,12 @@ class Audioplayer extends Component{
 
     render(){
         return(
-          <div className="card__audio">
+          <div className="card">
+             <button onClick={this.toggleModal} className="card__btn"> Edit ✎ </button>
              <AudioModal toggle={this.toggleModal} isShown={this.state.modalShown} changePlaylist = {this.changePlaylist} currentPlaylist={this.state.currentPlaylist}/>
             <iframe scrolling="no" frameborder="no" allow="autoplay"
             src={this.state.currentPlaylist}></iframe>
-        <button onClick={this.toggleModal} className="card__btn"> Change playlist </button>
+       
 
          </div>
         )

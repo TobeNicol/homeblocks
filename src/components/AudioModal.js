@@ -26,14 +26,14 @@ setPlaylist =  ()=>{
 }
 render(){
   return(
-    <div className={`${this.props.isShown ? 'show': 'hide'} card__modal-outer`}> 
-    <div className="card__modal-inner">
+    <div className={`${this.props.isShown ? 'show': 'hide'} modal`}> 
+    <div className="modal__inner">
       <h1>Enter soundcloud playlist link </h1>
-      <input className="card__modal-input" onChange={this.playlistChange}  />
-      <button  className="card__btn" onClick={this.setPlaylist}> 
+      <input className="modal__input" onChange={this.playlistChange}  />
+      <button  className="modal__btn" onClick={this.setPlaylist}> 
       CHANGE
       </button>
-          <button  className="card__btn" onClick={this.props.toggle}>
+          <button  className="modal__btn" onClick={this.props.toggle}>
           CANCEL
            </button>
             </div>

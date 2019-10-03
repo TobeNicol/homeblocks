@@ -13,7 +13,7 @@ class Sounds extends Component{
 
       render(){
           return(
-            <div className="card__sound-list"> 
+            <div className="card card__sound-list"> 
             { this.state.audio.map(sound=> {
                 return <SoundItem soundObj={sound}/>
                 }) }

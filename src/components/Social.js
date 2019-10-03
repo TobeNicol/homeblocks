@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class Twitter extends Component{
+class Social extends Component{
     constructor(){
         super()
         this.state= {
@@ -10,7 +10,8 @@ class Twitter extends Component{
 
       render(){
           return(
-            <div className="card__sound-list"> 
+            <div className="card"> 
+             {/* <button onClick={this.toggleModal} className="card__btn"> Edit ✎ </button> */}
             <h1>2000</h1>
             <span>followers</span>
             </div>
@@ -18,4 +19,4 @@ class Twitter extends Component{
       }
 }
 
-export default Twitter
+export default Social
