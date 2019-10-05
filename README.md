@@ -2,7 +2,7 @@
 # Homeblocks
 A customizable dashboard for your new tab.
 
-![Homeblocks image](./public/homeblocks)
+![Homeblocks image](./public/homeblocks.png)
 
 ## Features 
 - Add custom background page
