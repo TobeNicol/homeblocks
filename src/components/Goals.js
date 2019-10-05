@@ -17,6 +17,10 @@ class Goals extends Component{
       addGoals = (arr)=>{
         this.setState({goals: arr})
       }
+      
+      componentDidUpdate(_, prevState){
+        //if goal string 
+      }
 
       render(){
           return(

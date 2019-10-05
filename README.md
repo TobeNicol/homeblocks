@@ -2,6 +2,8 @@
 # Homeblocks
 A customizable dashboard for your new tab.
 
+![Homeblocks image](./public/homeblocks)
+
 ## Features 
 - Add custom background page
 - Pick blocks to display
@@ -10,6 +12,7 @@ Blocks Available:
 - Ambient nature sounds
 - Soundcloud playlist
 - Goals list
+
 
 ## Todos
 - Properly persist goals.
